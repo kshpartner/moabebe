@@ -147,15 +147,23 @@
       padding: 0 17px 12px; scroll-padding-inline: 17px;
       scroll-snap-type: x mandatory; scrollbar-width: none;
       overscroll-behavior-inline: contain;
+      cursor: grab; user-select: none;
     }
+    .pick-feed.dragging { cursor: grabbing; scroll-snap-type: none; }
     .pick-feed::-webkit-scrollbar { display: none; }
+    .pick-column {
+      flex: 0 0 clamp(185px, 46vw, 260px);
+      width: clamp(185px, 46vw, 260px);
+      display: grid;
+      grid-template-rows: repeat(2, clamp(185px, 42vw, 240px));
+      gap: 10px; scroll-snap-align: start;
+    }
     .pick-feed .card,
     .pick-feed .card:nth-child(3n+1) {
-      flex: 0 0 clamp(220px, 68vw, 300px);
-      width: clamp(220px, 68vw, 300px);
-      height: clamp(285px, 72vw, 350px);
-      min-height: 0; grid-row: auto; scroll-snap-align: start;
+      width: 100%; height: 100%;
+      min-height: 0; grid-row: auto; scroll-snap-align: none;
     }
+    .pick-feed .card img { -webkit-user-drag: none; user-select: none; }
     .pick-arrow {
       position: absolute; z-index: 5; top: 50%;
       width: 38px; height: 38px; display: grid; place-items: center;
@@ -228,6 +236,7 @@
     @media (max-width: 390px) {
       .feed { padding-inline: 10px; gap: 6px; }
       .pick-feed { padding-inline: 10px; gap: 8px; scroll-padding-inline: 10px; }
+      .pick-column { gap: 8px; }
       .card { min-height: 215px; }
       .card:nth-child(3n+1) { min-height: 380px; }
       .pick-feed .card,
@@ -280,6 +289,11 @@
     const categoryNav = document.getElementById("categories");
     let products = [];
     let activeCategory = "전체";
+    let pickMouseDragging = false;
+    let pickDragMoved = false;
+    let pickDragStartX = 0;
+    let pickDragStartScroll = 0;
+    let suppressPickClick = false;
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;").replaceAll("<", "&lt;")
@@ -311,7 +325,11 @@
         .filter((item) => Boolean(item.is_moabebe_pick))
         .sort((left, right) => String(right.picked_at || "").localeCompare(String(left.picked_at || "")));
       pickSection.hidden = !picks.length;
-      pickFeed.innerHTML = picks.map(cardTemplate).join("");
+      const columns = [];
+      for (let index = 0; index < picks.length; index += 2) {
+        columns.push(`<div class="pick-column">${picks.slice(index, index + 2).map(cardTemplate).join("")}</div>`);
+      }
+      pickFeed.innerHTML = columns.join("");
       pickFeed.scrollLeft = 0;
       requestAnimationFrame(updatePickArrows);
     }
@@ -323,9 +341,20 @@
     }
 
     function movePicks(direction) {
-      const card = pickFeed.querySelector(".card");
-      const distance = card ? card.getBoundingClientRect().width + 10 : pickFeed.clientWidth * .8;
+      const column = pickFeed.querySelector(".pick-column");
+      const distance = column ? column.getBoundingClientRect().width + 10 : pickFeed.clientWidth * .8;
       pickFeed.scrollBy({left: distance * direction, behavior: "smooth"});
+    }
+
+    function finishPickDrag() {
+      if (!pickMouseDragging) return;
+      pickMouseDragging = false;
+      pickFeed.classList.remove("dragging");
+      if (pickDragMoved) {
+        suppressPickClick = true;
+        setTimeout(() => { suppressPickClick = false; }, 250);
+      }
+      updatePickArrows();
     }
 
     function render() {
@@ -357,6 +386,30 @@
     pickPrev.addEventListener("click", () => movePicks(-1));
     pickNext.addEventListener("click", () => movePicks(1));
     pickFeed.addEventListener("scroll", updatePickArrows, {passive: true});
+    pickFeed.addEventListener("pointerdown", (event) => {
+      if (event.pointerType !== "mouse" || event.button !== 0) return;
+      pickMouseDragging = true;
+      pickDragMoved = false;
+      pickDragStartX = event.clientX;
+      pickDragStartScroll = pickFeed.scrollLeft;
+      pickFeed.classList.add("dragging");
+      pickFeed.setPointerCapture(event.pointerId);
+    });
+    pickFeed.addEventListener("pointermove", (event) => {
+      if (!pickMouseDragging) return;
+      const distance = event.clientX - pickDragStartX;
+      if (Math.abs(distance) > 4) pickDragMoved = true;
+      pickFeed.scrollLeft = pickDragStartScroll - distance;
+      event.preventDefault();
+    });
+    pickFeed.addEventListener("pointerup", finishPickDrag);
+    pickFeed.addEventListener("pointercancel", finishPickDrag);
+    pickFeed.addEventListener("click", (event) => {
+      if (!suppressPickClick) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      suppressPickClick = false;
+    }, true);
     window.addEventListener("resize", updatePickArrows);
   </script>
 </body>
