@@ -11,7 +11,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/882623564372096",
     "affiliate_url": "https://naver.me/5impHZ5z",
     "image": "assets/products/882623564372096.jpg",
-    "published_at": "2026-07-17T13:50:18+00:00"
+    "published_at": "2026-07-17T13:50:18+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "857155569754629",
@@ -25,7 +29,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/857155569754629",
     "affiliate_url": "https://naver.me/5B0teJaU",
     "image": "assets/products/857155569754629.jpg",
-    "published_at": "2026-07-17T13:50:08+00:00"
+    "published_at": "2026-07-17T13:50:08+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "949262474320449",
@@ -39,7 +47,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949262474320449",
     "affiliate_url": "https://naver.me/FetZi5Fu",
     "image": "assets/products/949262474320449.jpg",
-    "published_at": "2026-07-17T13:49:56+00:00"
+    "published_at": "2026-07-17T13:49:56+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "949262474316353",
@@ -53,7 +65,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949262474316353",
     "affiliate_url": "https://naver.me/FKGNQDmS",
     "image": "assets/products/949262474316353.jpg",
-    "published_at": "2026-07-17T13:49:45+00:00"
+    "published_at": "2026-07-17T13:49:45+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "908192036798336",
@@ -67,7 +83,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/908192036798336",
     "affiliate_url": "https://naver.me/xXnL0b1q",
     "image": "assets/products/908192036798336.jpg",
-    "published_at": "2026-07-17T13:49:35+00:00"
+    "published_at": "2026-07-17T13:49:35+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "901876833997857",
@@ -81,7 +101,10 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/901876833997857",
     "affiliate_url": "https://naver.me/5WUSk6eV",
     "image": "assets/products/901876833997857.jpg",
-    "published_at": "2026-07-17T13:49:24+00:00"
+    "published_at": "2026-07-17T13:49:24+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "949262474304064",
@@ -95,7 +118,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949262474304064",
     "affiliate_url": "https://naver.me/GZDOiQfv",
     "image": "assets/products/949262474304064.jpg",
-    "published_at": "2026-07-17T13:49:13+00:00"
+    "published_at": "2026-07-17T13:49:13+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "933347901603296",
@@ -103,13 +130,16 @@
     "title": "이키 메쉬 오가닉 아기 신생아 손싸개 여름 뱀",
     "sale_price": "할인율34%할인가4,800원",
     "commission_text": "수수료 18%",
-    "category": "패션잡화",
+    "category": "의류",
     "is_moabebe_pick": false,
     "picked_at": "",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901603296",
     "affiliate_url": "https://naver.me/5t7Ddboh",
     "image": "assets/products/933347901603296.jpg",
-    "published_at": "2026-07-17T13:49:01+00:00"
+    "published_at": "2026-07-17T13:49:01+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901603298",
@@ -123,7 +153,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901603298",
     "affiliate_url": "https://naver.me/x6Jnuh8r",
     "image": "assets/products/933347901603298.jpg",
-    "published_at": "2026-07-17T13:48:49+00:00"
+    "published_at": "2026-07-17T13:48:49+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "933347901562337",
@@ -137,12 +171,15 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901562337",
     "affiliate_url": "https://naver.me/FsoUXcPz",
     "image": "assets/products/933347901562337.jpg",
-    "published_at": "2026-07-17T13:48:39+00:00"
+    "published_at": "2026-07-17T13:48:39+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901582817",
     "brand_name": "이키",
-    "title": "오가닉 신생아 배냇저고리 출산 선물",
+    "title": "오가닉 신생아 배냇저고리 임신 출산 선물",
     "sale_price": "할인율35%할인가16,000원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -151,7 +188,10 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901582817",
     "affiliate_url": "https://naver.me/FqIX0BLx",
     "image": "assets/products/933347901582817.jpg",
-    "published_at": "2026-07-17T13:48:28+00:00"
+    "published_at": "2026-07-17T13:48:28+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901586914",
@@ -165,12 +205,15 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901586914",
     "affiliate_url": "https://naver.me/xrzlGNYY",
     "image": "assets/products/933347901586914.jpg",
-    "published_at": "2026-07-17T13:48:18+00:00"
+    "published_at": "2026-07-17T13:48:18+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901586912",
     "brand_name": "이키",
-    "title": "오가닉 메쉬 신생아 배냇저고리 뱀띠",
+    "title": "오가닉 메쉬 여름 신생아 배냇저고리",
     "sale_price": "할인율35%할인가16,000원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -179,7 +222,10 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901586912",
     "affiliate_url": "https://naver.me/5vJfpnkY",
     "image": "assets/products/933347901586912.jpg",
-    "published_at": "2026-07-17T13:48:07+00:00"
+    "published_at": "2026-07-17T13:48:07+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "960827105471904",
@@ -193,12 +239,16 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/960827105471904",
     "affiliate_url": "https://naver.me/Fz8JA7c4",
     "image": "assets/products/960827105471904.jpg",
-    "published_at": "2026-07-17T13:47:57+00:00"
+    "published_at": "2026-07-17T13:47:57+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "914654537742016",
     "brand_name": "이키",
-    "title": "신생아 6개월 돌 바디수트 출산선물",
+    "title": "신생아 6개월 돌 아기 긴소매 바디수트",
     "sale_price": "할인율21%할인가24,800원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -207,12 +257,16 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/914654537742016",
     "affiliate_url": "https://naver.me/x52vBRcG",
     "image": "assets/products/914654537742016.jpg",
-    "published_at": "2026-07-17T13:47:47+00:00"
+    "published_at": "2026-07-17T13:47:47+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "933347901611489",
     "brand_name": "이키",
-    "title": "뱀띠 신생아 배냇수트 긴소매 사계절",
+    "title": "이키 뱀띠 아기 신생아 배냇수트 사계절 긴소매",
     "sale_price": "할인율18%할인가29,800원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -221,7 +275,10 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901611489",
     "affiliate_url": "https://naver.me/FKGNQfs3",
     "image": "assets/products/933347901611489.jpg",
-    "published_at": "2026-07-17T13:47:26+00:00"
+    "published_at": "2026-07-17T13:47:26+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "882623564368009",
@@ -235,12 +292,15 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/882623564368009",
     "affiliate_url": "https://naver.me/GcAPE2jj",
     "image": "assets/products/882623564368009.jpg",
-    "published_at": "2026-07-17T13:47:16+00:00"
+    "published_at": "2026-07-17T13:47:16+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901550048",
     "brand_name": "이키",
-    "title": "밤비 긴소매 아기옷 신생아옷 바디슈트",
+    "title": "이키 밤비 아기옷 신생아옷 바디슈트 2종세트",
     "sale_price": "할인율21%할인가31,000원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -249,12 +309,15 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901550048",
     "affiliate_url": "https://naver.me/5xg8plM4",
     "image": "assets/products/933347901550048.jpg",
-    "published_at": "2026-07-17T08:26:22+00:00"
+    "published_at": "2026-07-17T08:26:22+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "933347901586913",
     "brand_name": "이키",
-    "title": "뱀띠 오가닉 신생아 아기옷 바디수트",
+    "title": "이키 뱀띠 오가닉 신생아옷 아기옷 바디수트",
     "sale_price": "할인율27%할인가14,000원",
     "commission_text": "수수료 18%",
     "category": "의류",
@@ -263,12 +326,15 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901586913",
     "affiliate_url": "https://naver.me/FvTzgKU9",
     "image": "assets/products/933347901586913.jpg",
-    "published_at": "2026-07-17T08:26:13+00:00"
+    "published_at": "2026-07-17T08:26:13+00:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "921602274057568",
     "brand_name": "신생아선물 트리베어",
-    "title": "신생아 바디슈트 3~6개월 아기옷 선물세트",
+    "title": "신생아 바디슈트 50일 60일 100일 3개월",
     "sale_price": "할인율23%할인가26,800원",
     "commission_text": "수수료 5%",
     "category": "의류",
@@ -277,7 +343,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/921602274057568",
     "affiliate_url": "https://naver.me/GWWz25Ax",
     "image": "assets/products/921602274057568.jpg",
-    "published_at": "2026-07-17T08:26:04+00:00"
+    "published_at": "2026-07-17T08:26:04+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "933347901607392",
@@ -291,7 +361,11 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901607392",
     "affiliate_url": "https://naver.me/Fkah3unE",
     "image": "assets/products/933347901607392.jpg",
-    "published_at": "2026-07-17T08:16:16+00:00"
+    "published_at": "2026-07-17T08:16:16+00:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "852574989292841",
@@ -308,7 +382,7 @@
   {
     "id": "933347901554145",
     "brand_name": "이키",
-    "title": "딸기우유 신생아옷 바디슈트 2종세트 반소매",
+    "title": "딸기우유 신생아 반소매 바디슈트 2종",
     "sale_price": "할인율24%할인가26,000원",
     "commission_text": "수수료 18%",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901554145",
@@ -317,12 +391,15 @@
     "published_at": "2026-07-16T11:52:03+00:00",
     "category": "의류",
     "is_moabebe_pick": true,
-    "picked_at": "2026-07-17T09:49:02+09:00"
+    "picked_at": "2026-07-17T09:49:02+09:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "930209578767456",
     "brand_name": "이키",
-    "title": "신생아 6개월 돌 바디수트 출산선물",
+    "title": "신생아 6개월 돌 아기 말띠 바디수트",
     "sale_price": "할인율16%할인가28,800원",
     "commission_text": "수수료 18%",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/930209578767456",
@@ -331,12 +408,16 @@
     "published_at": "2026-07-16T11:51:55+00:00",
     "category": "의류",
     "is_moabebe_pick": true,
-    "picked_at": "2026-07-17T09:25:40+09:00"
+    "picked_at": "2026-07-17T09:25:40+09:00",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ]
   },
   {
     "id": "933347901562338",
     "brand_name": "이키",
-    "title": "오가닉 신생아옷 바디수트 출산 선물",
+    "title": "오가닉 반소매 신생아 바디수트 토끼",
     "sale_price": "할인율27%할인가14,000원",
     "commission_text": "수수료 18%",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901562338",
@@ -345,12 +426,15 @@
     "published_at": "2026-07-16T11:51:46+00:00",
     "category": "의류",
     "is_moabebe_pick": true,
-    "picked_at": "2026-07-17T09:25:51+09:00"
+    "picked_at": "2026-07-17T09:25:51+09:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   },
   {
     "id": "891835559413504",
     "brand_name": "신생아선물 트리베어",
-    "title": "달마시안 도트 아기옷 바디슈트 출산선물",
+    "title": "트리베어 아기옷 달마시안 도트 땡땡이 바디슈트",
     "sale_price": "할인율37%할인가22,900원",
     "commission_text": "수수료 5%",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/891835559413504",
@@ -359,6 +443,9 @@
     "published_at": "2026-07-16T11:51:33+00:00",
     "category": "의류",
     "is_moabebe_pick": true,
-    "picked_at": "2026-07-17T09:25:25+09:00"
+    "picked_at": "2026-07-17T09:25:25+09:00",
+    "age_groups": [
+      "0~11개월"
+    ]
   }
 ]
