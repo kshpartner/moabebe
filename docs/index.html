@@ -236,6 +236,11 @@
       margin: 7px; border-radius: 20px; background: rgba(70,68,63,.64); color: white;
     }
     .loading { grid-column: 1 / -1; padding: 60px; text-align: center; color: var(--muted); }
+    .feed-sentinel {
+      padding: 10px 20px 34px; color: var(--muted);
+      text-align: center; font-size: 12px;
+    }
+    .feed-sentinel[hidden] { display: none; }
     @media (max-width: 390px) {
       .feed { padding-inline: 10px; gap: 6px; }
       .pick-feed { padding-inline: 10px; gap: 8px; scroll-padding-inline: 10px; }
@@ -277,6 +282,7 @@
     <div class="category-heading">전체 카테고리</div>
     <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
     <section id="feed" class="feed"><div class="loading">상품을 불러오는 중이에요.</div></section>
+    <div id="feed-sentinel" class="feed-sentinel" hidden></div>
   </main>
   <nav class="bottom-nav">
     <a class="nav-item active" href="#">⌂</a><a class="nav-item" href="#feed">♡</a>
@@ -284,6 +290,7 @@
   </nav>
   <script>
     const feed = document.getElementById("feed");
+    const feedSentinel = document.getElementById("feed-sentinel");
     const pickSection = document.getElementById("pick-section");
     const pickFeed = document.getElementById("pick-feed");
     const pickPrev = document.getElementById("pick-prev");
@@ -292,6 +299,10 @@
     const categoryNav = document.getElementById("categories");
     let products = [];
     let activeCategory = "전체";
+    let filteredProducts = [];
+    let renderedProductCount = 0;
+    let searchTimer = null;
+    const FEED_BATCH_SIZE = 40;
     let pickDragging = false;
     let pickDragMoved = false;
     let pickDragAxis = "";
@@ -366,32 +377,57 @@
       updatePickArrows();
     }
 
-    function render() {
+    function appendNextFeedBatch() {
+      if (renderedProductCount >= filteredProducts.length) {
+        feedSentinel.hidden = true;
+        return;
+      }
+      const nextItems = filteredProducts.slice(
+        renderedProductCount,
+        renderedProductCount + FEED_BATCH_SIZE
+      );
+      feed.insertAdjacentHTML("beforeend", nextItems.map(cardTemplate).join(""));
+      renderedProductCount += nextItems.length;
+      feedSentinel.hidden = renderedProductCount >= filteredProducts.length;
+      feedSentinel.textContent = `${renderedProductCount} / ${filteredProducts.length}개 · 아래로 스크롤하면 더 보여요`;
+    }
+
+    function refreshFeed() {
       const keyword = search.value.trim().toLowerCase();
-      const filtered = products.filter((item) => {
+      filteredProducts = products.filter((item) => {
         const category = item.category || "기타";
         return (activeCategory === "전체" || category === activeCategory)
           && `${item.brand_name} ${item.title} ${category}`.toLowerCase().includes(keyword);
       });
-      if (!filtered.length) {
+      renderedProductCount = 0;
+      feed.innerHTML = "";
+      if (!filteredProducts.length) {
+        feedSentinel.hidden = true;
         feed.innerHTML = `<div class="empty">${keyword ? "검색 결과가 없어요." : "아직 등록된 상품이 없어요.<br>곧 예쁜 상품으로 채워드릴게요."}</div>`;
         return;
       }
-      feed.innerHTML = filtered.map(cardTemplate).join("");
+      appendNextFeedBatch();
     }
 
     fetch(`data/products.json?v=${Date.now()}`)
       .then((response) => response.ok ? response.json() : [])
-      .then((data) => { products = Array.isArray(data) ? data : []; renderPicks(); renderCategories(); render(); })
-      .catch(() => { feed.innerHTML = '<div class="empty">상품을 불러오지 못했어요.<br>잠시 뒤 다시 시도해 주세요.</div>'; });
-    search.addEventListener("input", render);
+      .then((data) => { products = Array.isArray(data) ? data : []; renderPicks(); renderCategories(); refreshFeed(); })
+      .catch(() => { feedSentinel.hidden = true; feed.innerHTML = '<div class="empty">상품을 불러오지 못했어요.<br>잠시 뒤 다시 시도해 주세요.</div>'; });
+    search.addEventListener("input", () => {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(refreshFeed, 180);
+    });
     categoryNav.addEventListener("click", (event) => {
       const button = event.target.closest("button[data-category]");
       if (!button) return;
       activeCategory = button.dataset.category;
       renderCategories();
-      render();
+      refreshFeed();
     });
+    const feedObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) appendNextFeedBatch();
+    }, {rootMargin: "400px 0px"});
+    feedObserver.observe(feedSentinel);
     pickPrev.addEventListener("click", () => movePicks(-1));
     pickNext.addEventListener("click", () => movePicks(1));
     pickFeed.addEventListener("scroll", updatePickArrows, {passive: true});
