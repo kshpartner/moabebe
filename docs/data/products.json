@@ -20,7 +20,8 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901554145",
     "affiliate_url": "https://naver.me/FlBmGlBg",
     "image": "assets/products/933347901554145.jpg",
-    "published_at": "2026-07-16T11:52:03+00:00"
+    "published_at": "2026-07-16T11:52:03+00:00",
+    "category": "의류"
   },
   {
     "id": "930209578767456",
@@ -31,7 +32,8 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/930209578767456",
     "affiliate_url": "https://naver.me/xdMqPvn6",
     "image": "assets/products/930209578767456.jpg",
-    "published_at": "2026-07-16T11:51:55+00:00"
+    "published_at": "2026-07-16T11:51:55+00:00",
+    "category": "의류"
   },
   {
     "id": "933347901562338",
@@ -42,7 +44,8 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/933347901562338",
     "affiliate_url": "https://naver.me/F05uUBz4",
     "image": "assets/products/933347901562338.jpg",
-    "published_at": "2026-07-16T11:51:46+00:00"
+    "published_at": "2026-07-16T11:51:46+00:00",
+    "category": "의류"
   },
   {
     "id": "891835559413504",
@@ -53,6 +56,7 @@
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/891835559413504",
     "affiliate_url": "https://naver.me/GSQnJG94",
     "image": "assets/products/891835559413504.png",
-    "published_at": "2026-07-16T11:51:33+00:00"
+    "published_at": "2026-07-16T11:51:33+00:00",
+    "category": "의류"
   }
 ]
