@@ -368,7 +368,7 @@
       .replaceAll("'", "&#039;");
 
     function renderCategories() {
-      const preferredOrder = ["의류", "패션잡화", "수유·이유식", "기저귀·위생", "목욕·스킨케어", "수면·침구", "외출·안전", "놀이·완구", "기타"];
+      const preferredOrder = ["의류", "패션잡화", "수유·이유식", "기저귀·위생", "목욕·스킨케어", "수면·침구", "외출·안전", "놀이·완구", "돌잔치용품", "기타"];
       const available = new Set(products.map((item) => item.category || "기타"));
       const categories = ["전체", ...preferredOrder.filter((name) => available.has(name))];
       categoryNav.innerHTML = categories.map((name) => `
