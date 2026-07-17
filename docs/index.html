@@ -159,6 +159,12 @@
       scroll-snap-type: x proximity;
     }
     .categories::-webkit-scrollbar { display: none; }
+    .age-groups {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding: 7px 17px 6px; scrollbar-width: none;
+    }
+    .age-groups[hidden] { display: none; }
+    .age-groups::-webkit-scrollbar { display: none; }
     .category-button {
       flex: 0 0 auto; scroll-snap-align: start;
       padding: 9px 13px; border: 1px solid rgba(23,23,20,.12);
@@ -328,6 +334,7 @@
     </section>
     <div class="category-heading">전체 카테고리</div>
     <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
+    <nav id="age-groups" class="age-groups" aria-label="의류 연령대" hidden></nav>
     <section id="feed" class="feed"><div class="loading">상품을 불러오는 중이에요.</div></section>
     <div id="feed-sentinel" class="feed-sentinel" hidden></div>
   </main>
@@ -347,8 +354,10 @@
     const search = document.getElementById("search");
     const searchNav = document.getElementById("search-nav");
     const categoryNav = document.getElementById("categories");
+    const ageGroupNav = document.getElementById("age-groups");
     let products = [];
     let activeCategory = "전체";
+    let activeAgeGroup = "전체 연령";
     let filteredProducts = [];
     let renderedProductCount = 0;
     let searchTimer = null;
@@ -373,6 +382,15 @@
       const categories = ["전체", ...preferredOrder.filter((name) => available.has(name))];
       categoryNav.innerHTML = categories.map((name) => `
         <button class="category-button ${name === activeCategory ? "active" : ""}" data-category="${escapeHtml(name)}">${escapeHtml(name)}</button>
+      `).join("");
+      renderAgeGroups();
+    }
+
+    function renderAgeGroups() {
+      const ageGroups = ["전체 연령", "0~11개월", "12~23개월", "24개월 이상"];
+      ageGroupNav.hidden = activeCategory !== "의류";
+      ageGroupNav.innerHTML = ageGroups.map((name) => `
+        <button class="category-button ${name === activeAgeGroup ? "active" : ""}" data-age-group="${escapeHtml(name)}">${escapeHtml(name)}</button>
       `).join("");
     }
 
@@ -446,8 +464,10 @@
       const keyword = search.value.trim().toLowerCase();
       filteredProducts = products.filter((item) => {
         const category = item.category || "기타";
+        const ageGroups = Array.isArray(item.age_groups) ? item.age_groups : [];
         return (activeCategory === "전체" || category === activeCategory)
-          && `${item.brand_name} ${item.title} ${category}`.toLowerCase().includes(keyword);
+          && (activeCategory !== "의류" || activeAgeGroup === "전체 연령" || ageGroups.includes(activeAgeGroup))
+          && `${item.brand_name} ${item.title} ${category} ${ageGroups.join(" ")}`.toLowerCase().includes(keyword);
       });
       renderedProductCount = 0;
       feed.innerHTML = "";
@@ -476,7 +496,15 @@
       const button = event.target.closest("button[data-category]");
       if (!button) return;
       activeCategory = button.dataset.category;
+      activeAgeGroup = "전체 연령";
       renderCategories();
+      refreshFeed();
+    });
+    ageGroupNav.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-age-group]");
+      if (!button) return;
+      activeAgeGroup = button.dataset.ageGroup;
+      renderAgeGroups();
       refreshFeed();
     });
     const feedObserver = new IntersectionObserver((entries) => {
