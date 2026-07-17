@@ -147,7 +147,7 @@
       padding: 0 17px 12px; scroll-padding-inline: 17px;
       scroll-snap-type: x mandatory; scrollbar-width: none;
       overscroll-behavior-inline: contain;
-      cursor: grab; user-select: none;
+      cursor: grab; user-select: none; touch-action: pan-y;
     }
     .pick-feed.dragging { cursor: grabbing; scroll-snap-type: none; }
     .pick-feed::-webkit-scrollbar { display: none; }
@@ -289,9 +289,12 @@
     const categoryNav = document.getElementById("categories");
     let products = [];
     let activeCategory = "전체";
-    let pickMouseDragging = false;
+    let pickDragging = false;
     let pickDragMoved = false;
+    let pickDragAxis = "";
+    let pickPointerId = null;
     let pickDragStartX = 0;
+    let pickDragStartY = 0;
     let pickDragStartScroll = 0;
     let suppressPickClick = false;
 
@@ -310,8 +313,8 @@
     }
 
     const cardTemplate = (item) => `
-      <a class="card" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
-        <img loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
+      <a class="card" draggable="false" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
+        <img draggable="false" loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
         <div class="shade"></div>
         <div class="card-copy"><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
         <div class="external">↗</div>
@@ -346,14 +349,17 @@
       pickFeed.scrollBy({left: distance * direction, behavior: "smooth"});
     }
 
-    function finishPickDrag() {
-      if (!pickMouseDragging) return;
-      pickMouseDragging = false;
+    function finishPickDrag(event = null) {
+      if (!pickDragging) return;
+      if (event && pickPointerId !== null && event.pointerId !== pickPointerId) return;
+      pickDragging = false;
       pickFeed.classList.remove("dragging");
       if (pickDragMoved) {
         suppressPickClick = true;
         setTimeout(() => { suppressPickClick = false; }, 250);
       }
+      pickPointerId = null;
+      pickDragAxis = "";
       updatePickArrows();
     }
 
@@ -387,23 +393,33 @@
     pickNext.addEventListener("click", () => movePicks(1));
     pickFeed.addEventListener("scroll", updatePickArrows, {passive: true});
     pickFeed.addEventListener("pointerdown", (event) => {
-      if (event.pointerType !== "mouse" || event.button !== 0) return;
-      pickMouseDragging = true;
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+      pickDragging = true;
       pickDragMoved = false;
+      pickDragAxis = "";
+      pickPointerId = event.pointerId;
       pickDragStartX = event.clientX;
+      pickDragStartY = event.clientY;
       pickDragStartScroll = pickFeed.scrollLeft;
       pickFeed.classList.add("dragging");
       pickFeed.setPointerCapture(event.pointerId);
     });
     pickFeed.addEventListener("pointermove", (event) => {
-      if (!pickMouseDragging) return;
-      const distance = event.clientX - pickDragStartX;
-      if (Math.abs(distance) > 4) pickDragMoved = true;
-      pickFeed.scrollLeft = pickDragStartScroll - distance;
+      if (!pickDragging || event.pointerId !== pickPointerId) return;
+      const distanceX = event.clientX - pickDragStartX;
+      const distanceY = event.clientY - pickDragStartY;
+      if (!pickDragAxis && Math.max(Math.abs(distanceX), Math.abs(distanceY)) > 5) {
+        pickDragAxis = Math.abs(distanceX) > Math.abs(distanceY) ? "horizontal" : "vertical";
+      }
+      if (pickDragAxis === "vertical") return;
+      if (pickDragAxis !== "horizontal") return;
+      pickDragMoved = true;
+      pickFeed.scrollLeft = pickDragStartScroll - distanceX;
       event.preventDefault();
-    });
+    }, {passive: false});
     pickFeed.addEventListener("pointerup", finishPickDrag);
     pickFeed.addEventListener("pointercancel", finishPickDrag);
+    pickFeed.addEventListener("dragstart", (event) => event.preventDefault());
     pickFeed.addEventListener("click", (event) => {
       if (!suppressPickClick) return;
       event.preventDefault();
