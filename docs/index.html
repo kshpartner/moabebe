@@ -105,6 +105,22 @@
       content: ""; position: absolute; left: 15%; right: 15%; bottom: 0;
       height: 3px; background: var(--ink);
     }
+    .categories {
+      display: flex; gap: 8px; overflow-x: auto;
+      padding: 14px 17px 4px; scrollbar-width: none;
+      scroll-snap-type: x proximity;
+    }
+    .categories::-webkit-scrollbar { display: none; }
+    .category-button {
+      flex: 0 0 auto; scroll-snap-align: start;
+      padding: 9px 13px; border: 1px solid rgba(23,23,20,.12);
+      border-radius: 999px; background: rgba(255,255,255,.72);
+      color: #68645c; font-size: 12px; font-weight: 800;
+      cursor: pointer;
+    }
+    .category-button.active {
+      border-color: var(--ink); background: var(--ink); color: white;
+    }
     .intro { padding: 56px 20px 32px; text-align: center; }
     .zigzag { color: #aaa69d; letter-spacing: 3px; font-size: 17px; }
     .intro h2 { margin: 34px 0 0; font-size: 17px; letter-spacing: .2px; }
@@ -131,6 +147,12 @@
     .card-copy { position: absolute; z-index: 2; top: 12px; left: 12px; right: 34px; color: white; }
     .brand { font-size: 11px; font-weight: 800; opacity: .9; }
     .title { margin-top: 3px; font-size: 13px; font-weight: 800; line-height: 1.35; text-shadow: 0 1px 5px rgba(0,0,0,.25); }
+    .category-label {
+      display: inline-flex; margin-bottom: 6px; padding: 4px 7px;
+      border-radius: 999px; background: rgba(255,255,255,.9);
+      color: #40392e; font-size: 10px; font-weight: 900;
+      text-shadow: none; backdrop-filter: blur(8px);
+    }
     .price {
       position: absolute; z-index: 2; left: 12px; bottom: 12px;
       padding: 6px 9px; border-radius: 999px;
@@ -182,7 +204,8 @@
       <div class="social">◎</div>
     </section>
     <div class="search-wrap"><div class="search-box"><input id="search" class="search" placeholder="상품 검색하기"></div></div>
-    <nav class="tabs"><div class="tab active">SELECT</div><div class="tab">BABY</div><div class="tab">KIDS</div><div class="tab">ABOUT</div></nav>
+    <nav class="tabs"><div class="tab active">SELECT</div><div class="tab">BABY</div><div class="tab">LIFE</div><div class="tab">ABOUT</div></nav>
+    <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
     <section class="intro">
       <div class="zigzag">⌁⌁⌁⌁⌁⌁⌁⌁</div>
       <h2>MOABEBE SELECT</h2>
@@ -198,18 +221,31 @@
   <script>
     const feed = document.getElementById("feed");
     const search = document.getElementById("search");
+    const categoryNav = document.getElementById("categories");
     let products = [];
+    let activeCategory = "전체";
 
     const escapeHtml = (value) => String(value ?? "")
       .replaceAll("&", "&amp;").replaceAll("<", "&lt;")
       .replaceAll(">", "&gt;").replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
 
-    function render(query = "") {
-      const keyword = query.trim().toLowerCase();
-      const filtered = products.filter((item) =>
-        `${item.brand_name} ${item.title}`.toLowerCase().includes(keyword)
-      );
+    function renderCategories() {
+      const preferredOrder = ["의류", "패션잡화", "수유·이유식", "기저귀·위생", "목욕·스킨케어", "수면·침구", "외출·안전", "놀이·완구", "기타"];
+      const available = new Set(products.map((item) => item.category || "기타"));
+      const categories = ["전체", ...preferredOrder.filter((name) => available.has(name))];
+      categoryNav.innerHTML = categories.map((name) => `
+        <button class="category-button ${name === activeCategory ? "active" : ""}" data-category="${escapeHtml(name)}">${escapeHtml(name)}</button>
+      `).join("");
+    }
+
+    function render() {
+      const keyword = search.value.trim().toLowerCase();
+      const filtered = products.filter((item) => {
+        const category = item.category || "기타";
+        return (activeCategory === "전체" || category === activeCategory)
+          && `${item.brand_name} ${item.title} ${category}`.toLowerCase().includes(keyword);
+      });
       if (!filtered.length) {
         feed.innerHTML = `<div class="empty">${keyword ? "검색 결과가 없어요." : "아직 등록된 상품이 없어요.<br>곧 예쁜 상품으로 채워드릴게요."}</div>`;
         return;
@@ -218,7 +254,7 @@
         <a class="card" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
           <img loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
           <div class="shade"></div>
-          <div class="card-copy"><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
+          <div class="card-copy"><div class="category-label">${escapeHtml(item.category || "기타")}</div><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
           <div class="external">↗</div>
           ${item.sale_price ? `<div class="price">${escapeHtml(item.sale_price)}</div>` : ""}
         </a>
@@ -227,9 +263,16 @@
 
     fetch(`data/products.json?v=${Date.now()}`)
       .then((response) => response.ok ? response.json() : [])
-      .then((data) => { products = Array.isArray(data) ? data : []; render(); })
+      .then((data) => { products = Array.isArray(data) ? data : []; renderCategories(); render(); })
       .catch(() => { feed.innerHTML = '<div class="empty">상품을 불러오지 못했어요.<br>잠시 뒤 다시 시도해 주세요.</div>'; });
-    search.addEventListener("input", (event) => render(event.target.value));
+    search.addEventListener("input", render);
+    categoryNav.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      renderCategories();
+      render();
+    });
   </script>
 </body>
 </html>
