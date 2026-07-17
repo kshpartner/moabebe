@@ -121,11 +121,24 @@
     .category-button.active {
       border-color: var(--ink); background: var(--ink); color: white;
     }
+    .category-heading {
+      padding: 32px 17px 0; font-size: 17px; font-weight: 900;
+      letter-spacing: -.4px;
+    }
     .intro { padding: 56px 20px 32px; text-align: center; }
     .zigzag { color: #aaa69d; letter-spacing: 3px; font-size: 17px; }
     .intro h2 { margin: 34px 0 0; font-size: 17px; letter-spacing: .2px; }
     .intro .icons { margin-top: 28px; font-size: 23px; }
     .intro p { margin: 8px 0 0; color: #69665f; font-size: 13px; line-height: 1.7; }
+    .pick-section { padding-top: 16px; }
+    .pick-head { padding: 18px 17px 18px; text-align: center; }
+    .pick-kicker {
+      color: #9c7b1d; font-size: 10px; font-weight: 900;
+      letter-spacing: 1.8px;
+    }
+    .pick-head h2 { margin: 6px 0 0; font-size: 22px; letter-spacing: -.7px; }
+    .pick-head p { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+    .pick-feed { padding-bottom: 8px; }
     .feed {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -148,7 +161,8 @@
     .brand { font-size: 11px; font-weight: 800; opacity: .9; }
     .title { margin-top: 3px; font-size: 13px; font-weight: 800; line-height: 1.35; text-shadow: 0 1px 5px rgba(0,0,0,.25); }
     .category-label {
-      display: inline-flex; margin-bottom: 6px; padding: 4px 7px;
+      position: absolute; z-index: 2; right: 12px; bottom: 12px;
+      display: inline-flex; padding: 4px 7px;
       border-radius: 999px; background: rgba(255,255,255,.9);
       color: #40392e; font-size: 10px; font-weight: 900;
       text-shadow: none; backdrop-filter: blur(8px);
@@ -205,13 +219,22 @@
     </section>
     <div class="search-wrap"><div class="search-box"><input id="search" class="search" placeholder="상품 검색하기"></div></div>
     <nav class="tabs"><div class="tab active">SELECT</div><div class="tab">BABY</div><div class="tab">LIFE</div><div class="tab">ABOUT</div></nav>
-    <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
     <section class="intro">
       <div class="zigzag">⌁⌁⌁⌁⌁⌁⌁⌁</div>
       <h2>MOABEBE SELECT</h2>
       <div class="icons">♡ 🍼 ♡</div>
       <p>피드에서 먼저 발견한<br>모아베베의 특별한 상품들이에요.<br>눈여겨 본 아이템을 가장 빠르게 만나보세요.</p>
     </section>
+    <section id="pick-section" class="pick-section" hidden>
+      <div class="pick-head">
+        <div class="pick-kicker">EDITOR'S CHOICE</div>
+        <h2>모아베베 PICK</h2>
+        <p>모아베베가 직접 고른 추천 아이템이에요.</p>
+      </div>
+      <div id="pick-feed" class="feed pick-feed"></div>
+    </section>
+    <div class="category-heading">전체 카테고리</div>
+    <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
     <section id="feed" class="feed"><div class="loading">상품을 불러오는 중이에요.</div></section>
   </main>
   <nav class="bottom-nav">
@@ -220,6 +243,8 @@
   </nav>
   <script>
     const feed = document.getElementById("feed");
+    const pickSection = document.getElementById("pick-section");
+    const pickFeed = document.getElementById("pick-feed");
     const search = document.getElementById("search");
     const categoryNav = document.getElementById("categories");
     let products = [];
@@ -239,6 +264,25 @@
       `).join("");
     }
 
+    const cardTemplate = (item) => `
+      <a class="card" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
+        <img loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
+        <div class="shade"></div>
+        <div class="card-copy"><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
+        <div class="external">↗</div>
+        ${item.sale_price ? `<div class="price">${escapeHtml(item.sale_price)}</div>` : ""}
+        <div class="category-label">${escapeHtml(item.category || "기타")}</div>
+      </a>
+    `;
+
+    function renderPicks() {
+      const picks = products
+        .filter((item) => Boolean(item.is_moabebe_pick))
+        .sort((left, right) => String(right.picked_at || "").localeCompare(String(left.picked_at || "")));
+      pickSection.hidden = !picks.length;
+      pickFeed.innerHTML = picks.map(cardTemplate).join("");
+    }
+
     function render() {
       const keyword = search.value.trim().toLowerCase();
       const filtered = products.filter((item) => {
@@ -250,20 +294,12 @@
         feed.innerHTML = `<div class="empty">${keyword ? "검색 결과가 없어요." : "아직 등록된 상품이 없어요.<br>곧 예쁜 상품으로 채워드릴게요."}</div>`;
         return;
       }
-      feed.innerHTML = filtered.map((item) => `
-        <a class="card" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
-          <img loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
-          <div class="shade"></div>
-          <div class="card-copy"><div class="category-label">${escapeHtml(item.category || "기타")}</div><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
-          <div class="external">↗</div>
-          ${item.sale_price ? `<div class="price">${escapeHtml(item.sale_price)}</div>` : ""}
-        </a>
-      `).join("");
+      feed.innerHTML = filtered.map(cardTemplate).join("");
     }
 
     fetch(`data/products.json?v=${Date.now()}`)
       .then((response) => response.ok ? response.json() : [])
-      .then((data) => { products = Array.isArray(data) ? data : []; renderCategories(); render(); })
+      .then((data) => { products = Array.isArray(data) ? data : []; renderPicks(); renderCategories(); render(); })
       .catch(() => { feed.innerHTML = '<div class="empty">상품을 불러오지 못했어요.<br>잠시 뒤 다시 시도해 주세요.</div>'; });
     search.addEventListener("input", render);
     categoryNav.addEventListener("click", (event) => {
