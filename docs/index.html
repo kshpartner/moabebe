@@ -138,7 +138,32 @@
     }
     .pick-head h2 { margin: 6px 0 0; font-size: 22px; letter-spacing: -.7px; }
     .pick-head p { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
-    .pick-feed { padding-bottom: 8px; }
+    .pick-carousel { position: relative; }
+    .pick-feed {
+      display: flex; gap: 10px; overflow-x: auto;
+      padding: 0 17px 12px; scroll-padding-inline: 17px;
+      scroll-snap-type: x mandatory; scrollbar-width: none;
+      overscroll-behavior-inline: contain;
+    }
+    .pick-feed::-webkit-scrollbar { display: none; }
+    .pick-feed .card,
+    .pick-feed .card:nth-child(3n+1) {
+      flex: 0 0 clamp(220px, 68vw, 300px);
+      width: clamp(220px, 68vw, 300px);
+      height: clamp(285px, 72vw, 350px);
+      min-height: 0; grid-row: auto; scroll-snap-align: start;
+    }
+    .pick-arrow {
+      position: absolute; z-index: 5; top: 50%;
+      width: 38px; height: 38px; display: grid; place-items: center;
+      transform: translateY(-50%); border: 1px solid rgba(255,255,255,.7);
+      border-radius: 50%; background: rgba(33,32,28,.68); color: white;
+      box-shadow: 0 4px 14px rgba(0,0,0,.18); cursor: pointer;
+      font-size: 23px; line-height: 1; backdrop-filter: blur(10px);
+    }
+    .pick-arrow.prev { left: 5px; }
+    .pick-arrow.next { right: 5px; }
+    .pick-arrow:disabled { opacity: 0; pointer-events: none; }
     .feed {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -199,8 +224,11 @@
     .loading { grid-column: 1 / -1; padding: 60px; text-align: center; color: var(--muted); }
     @media (max-width: 390px) {
       .feed { padding-inline: 10px; gap: 6px; }
+      .pick-feed { padding-inline: 10px; gap: 8px; scroll-padding-inline: 10px; }
       .card { min-height: 215px; }
       .card:nth-child(3n+1) { min-height: 380px; }
+      .pick-feed .card,
+      .pick-feed .card:nth-child(3n+1) { min-height: 0; }
     }
   </style>
 </head>
@@ -231,7 +259,11 @@
         <h2>모아베베 PICK</h2>
         <p>모아베베가 직접 고른 추천 아이템이에요.</p>
       </div>
-      <div id="pick-feed" class="feed pick-feed"></div>
+      <div class="pick-carousel">
+        <button id="pick-prev" class="pick-arrow prev" type="button" aria-label="이전 PICK">‹</button>
+        <div id="pick-feed" class="pick-feed"></div>
+        <button id="pick-next" class="pick-arrow next" type="button" aria-label="다음 PICK">›</button>
+      </div>
     </section>
     <div class="category-heading">전체 카테고리</div>
     <nav id="categories" class="categories" aria-label="상품 카테고리"></nav>
@@ -245,6 +277,8 @@
     const feed = document.getElementById("feed");
     const pickSection = document.getElementById("pick-section");
     const pickFeed = document.getElementById("pick-feed");
+    const pickPrev = document.getElementById("pick-prev");
+    const pickNext = document.getElementById("pick-next");
     const search = document.getElementById("search");
     const categoryNav = document.getElementById("categories");
     let products = [];
@@ -281,6 +315,20 @@
         .sort((left, right) => String(right.picked_at || "").localeCompare(String(left.picked_at || "")));
       pickSection.hidden = !picks.length;
       pickFeed.innerHTML = picks.map(cardTemplate).join("");
+      pickFeed.scrollLeft = 0;
+      requestAnimationFrame(updatePickArrows);
+    }
+
+    function updatePickArrows() {
+      const maxScroll = Math.max(0, pickFeed.scrollWidth - pickFeed.clientWidth);
+      pickPrev.disabled = pickFeed.scrollLeft <= 2;
+      pickNext.disabled = pickFeed.scrollLeft >= maxScroll - 2;
+    }
+
+    function movePicks(direction) {
+      const card = pickFeed.querySelector(".card");
+      const distance = card ? card.getBoundingClientRect().width + 10 : pickFeed.clientWidth * .8;
+      pickFeed.scrollBy({left: distance * direction, behavior: "smooth"});
     }
 
     function render() {
@@ -309,6 +357,10 @@
       renderCategories();
       render();
     });
+    pickPrev.addEventListener("click", () => movePicks(-1));
+    pickNext.addEventListener("click", () => movePicks(1));
+    pickFeed.addEventListener("scroll", updatePickArrows, {passive: true});
+    window.addEventListener("resize", updatePickArrows);
   </script>
 </body>
 </html>
