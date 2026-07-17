@@ -1,5 +1,23 @@
 [
   {
+    "id": "931146583774144",
+    "brand_name": "데일리아기옷",
+    "title": "남아 백일 돌잔치 촬영의상 하객룩 케인 반팔",
+    "sale_price": "41,800원",
+    "commission_text": "수수료 5%",
+    "category": "돌잔치용품",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": true,
+    "picked_at": "2026-07-17T22:50:35+09:00",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/931146583774144",
+    "affiliate_url": "https://naver.me/xHEFPrAK",
+    "image": "assets/products/931146583774144.jpg",
+    "published_at": "2026-07-17T15:23:42+00:00"
+  },
+  {
     "id": "929745146315809",
     "brand_name": "데일리아기옷",
     "title": "아기정장 백일 돌잔치 촬영의상 하객룩 세트",
