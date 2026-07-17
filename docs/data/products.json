@@ -21,7 +21,9 @@
     "affiliate_url": "https://naver.me/FlBmGlBg",
     "image": "assets/products/933347901554145.jpg",
     "published_at": "2026-07-16T11:52:03+00:00",
-    "category": "의류"
+    "category": "의류",
+    "is_moabebe_pick": true,
+    "picked_at": "2026-07-17T09:49:02+09:00"
   },
   {
     "id": "930209578767456",
