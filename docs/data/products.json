@@ -1,5 +1,23 @@
 [
   {
+    "id": "951650991933984",
+    "brand_name": "데일리아기옷",
+    "title": "여아 백일 돌잔치 촬영의상 체리 블룸 바디슈트",
+    "sale_price": "39,600원",
+    "commission_text": "수수료 5%",
+    "category": "돌잔치용품",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/951650991933984",
+    "affiliate_url": "https://naver.me/5NewX4Ii",
+    "image": "assets/products/951650991933984.jpg",
+    "published_at": "2026-07-18T00:27:36+00:00"
+  },
+  {
     "id": "949910839761888",
     "brand_name": "라라페어리",
     "title": "원피스 바디수트 50일 6개월 백일 돌 외출복",
