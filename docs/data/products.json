@@ -1,5 +1,22 @@
 [
   {
+    "id": "889495096086560",
+    "brand_name": "베이비앙",
+    "title": "[베이비바우처/N배송] 베이비앙 국내산",
+    "sale_price": "할인율21%할인가22,900원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/889495096086560",
+    "affiliate_url": "https://naver.me/Fns4DuG9",
+    "image": "assets/products/889495096086560.jpg",
+    "published_at": "2026-07-18T02:39:58+00:00"
+  },
+  {
     "id": "949262474287680",
     "brand_name": "로라밤",
     "title": "프레쉬 뱀부 반팔 바디수트 여름 아기 신생아",
