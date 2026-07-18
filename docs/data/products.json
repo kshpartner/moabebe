@@ -1,5 +1,23 @@
 [
   {
+    "id": "949910839761888",
+    "brand_name": "라라페어리",
+    "title": "원피스 바디수트 50일 6개월 백일 돌 외출복",
+    "sale_price": "할인율2%할인가32,900원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949910839761888",
+    "affiliate_url": "https://naver.me/GFsML5x2",
+    "image": "assets/products/949910839761888.png",
+    "published_at": "2026-07-18T00:27:25+00:00"
+  },
+  {
     "id": "951297964849824",
     "brand_name": "루바노",
     "title": "루바노 아기옷 롬퍼 여름 외출복 신생아옷",
