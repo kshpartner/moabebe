@@ -1,5 +1,23 @@
 [
   {
+    "id": "971603747698080",
+    "brand_name": "oDoDo",
+    "title": "아동 유아 흰티 아기 티셔츠 기본 면 이너 긴팔티",
+    "sale_price": "6,400원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/971603747698080",
+    "affiliate_url": "https://naver.me/FSvFkKPJ",
+    "image": "assets/products/971603747698080.jpg",
+    "published_at": "2026-07-18T11:11:14+00:00"
+  },
+  {
     "id": "971603748464032",
     "brand_name": "oDoDo",
     "title": "유아 흰티 워싱 슬라브 반팔티 아동 키즈 티셔츠",
