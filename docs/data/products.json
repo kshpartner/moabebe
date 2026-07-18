@@ -1,5 +1,22 @@
 [
   {
+    "id": "949262474287680",
+    "brand_name": "로라밤",
+    "title": "프레쉬 뱀부 반팔 바디수트 여름 아기 신생아",
+    "sale_price": "할인율25%할인가13,900원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949262474287680",
+    "affiliate_url": "https://naver.me/FTdEvm2r",
+    "image": "assets/products/949262474287680.jpg",
+    "published_at": "2026-07-18T02:39:48+00:00"
+  },
+  {
     "id": "949262474295872",
     "brand_name": "로라밤",
     "title": "에어쿨링 뱀부 반팔 메쉬 여름 뱀부 바디수트 아기",
