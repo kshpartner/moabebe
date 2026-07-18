@@ -404,7 +404,13 @@
     }
 
     const cardTemplate = (item) => `
-      <a class="card" draggable="false" href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
+      <a class="card" draggable="false"
+        data-product-id="${escapeHtml(item.id)}"
+        data-product-name="${escapeHtml(item.title)}"
+        data-product-brand="${escapeHtml(item.brand_name)}"
+        data-product-category="${escapeHtml(item.category || "기타")}"
+        data-product-pick="${item.is_moabebe_pick ? "true" : "false"}"
+        href="${escapeHtml(item.affiliate_url || item.product_url)}" target="_blank" rel="noopener sponsored">
         <img draggable="false" loading="lazy" src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}">
         <div class="shade"></div>
         <div class="card-copy"><div class="brand">${escapeHtml(item.brand_name)}</div><div class="title">${escapeHtml(item.title)}</div></div>
@@ -515,6 +521,19 @@
       activeAgeGroup = button.dataset.ageGroup;
       renderAgeGroups();
       refreshFeed();
+    });
+    document.addEventListener("click", (event) => {
+      const card = event.target.closest("a.card[data-product-id]");
+      if (!card || typeof window.gtag !== "function") return;
+      window.gtag("event", "product_click", {
+        item_id: card.dataset.productId || "",
+        item_name: card.dataset.productName || "",
+        item_brand: card.dataset.productBrand || "",
+        item_category: card.dataset.productCategory || "기타",
+        is_moabebe_pick: card.dataset.productPick === "true",
+        source_section: card.closest("#pick-feed") ? "moabebe_pick" : "product_feed",
+        link_url: card.href,
+      });
     });
     const feedObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) appendNextFeedBatch();
