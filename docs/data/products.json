@@ -1,5 +1,22 @@
 [
   {
+    "id": "827988654425957",
+    "brand_name": "빌리 스토어",
+    "title": "빌리 블랑드 바디수트 크림(6m~18m)",
+    "sale_price": "39,000원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/827988654425957",
+    "affiliate_url": "https://naver.me/FAA98nDX",
+    "image": "assets/products/827988654425957.jpg",
+    "published_at": "2026-07-18T02:40:09+00:00"
+  },
+  {
     "id": "889495096086560",
     "brand_name": "베이비앙",
     "title": "[베이비바우처/N배송] 베이비앙 국내산",
