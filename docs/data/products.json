@@ -1,5 +1,23 @@
 [
   {
+    "id": "809823444785882",
+    "brand_name": "아이꾸미기",
+    "title": "반팔티셔츠 유아 키즈 어린이 반팔티 유치원",
+    "sale_price": "할인율35%할인가9,900원",
+    "commission_text": "수수료 8%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/809823444785882",
+    "affiliate_url": "https://naver.me/GRD5BStl",
+    "image": "assets/products/809823444785882.jpg",
+    "published_at": "2026-07-19T00:07:59+00:00"
+  },
+  {
     "id": "971603748472224",
     "brand_name": "oDoDo",
     "title": "아기 흰티 워싱 슬라브 루즈핏 긴팔티 아동 키즈",
