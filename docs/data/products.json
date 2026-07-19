@@ -1,5 +1,23 @@
 [
   {
+    "id": "971603748472224",
+    "brand_name": "oDoDo",
+    "title": "아기 흰티 워싱 슬라브 루즈핏 긴팔티 아동 키즈",
+    "sale_price": "6,900원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/971603748472224",
+    "affiliate_url": "https://naver.me/FG3HDSdM",
+    "image": "assets/products/971603748472224.png",
+    "published_at": "2026-07-19T00:07:49+00:00"
+  },
+  {
     "id": "971603747698080",
     "brand_name": "oDoDo",
     "title": "아동 유아 흰티 아기 티셔츠 기본 면 이너 긴팔티",
