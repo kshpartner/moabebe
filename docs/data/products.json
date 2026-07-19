@@ -1,5 +1,23 @@
 [
   {
+    "id": "827988654487402",
+    "brand_name": "빌리 스토어",
+    "title": "빌리 스리즈 티셔츠-2color",
+    "sale_price": "할인율30%할인가13,300원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/827988654487402",
+    "affiliate_url": "https://naver.me/xONA3GSp",
+    "image": "assets/products/827988654487402.jpg",
+    "published_at": "2026-07-19T00:08:09+00:00"
+  },
+  {
     "id": "809823444785882",
     "brand_name": "아이꾸미기",
     "title": "반팔티셔츠 유아 키즈 어린이 반팔티 유치원",
