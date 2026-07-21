@@ -1,5 +1,23 @@
 [
   {
+    "id": "942476144405024",
+    "brand_name": "데일리아기옷",
+    "title": "플라워 패턴 여름 나시 원피스",
+    "sale_price": "34,100원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/942476144405024",
+    "affiliate_url": "https://naver.me/xIFWZtVA",
+    "image": "assets/products/942476144405024.jpg",
+    "published_at": "2026-07-21T12:03:24+00:00"
+  },
+  {
     "id": "939317180209984",
     "brand_name": "데일리아기옷",
     "title": "여아 돌잔치 촬영 하객룩 오닉스 원피스",
