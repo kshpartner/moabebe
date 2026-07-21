@@ -1,5 +1,23 @@
 [
   {
+    "id": "827988654475126",
+    "brand_name": "빌리 스토어",
+    "title": "빌리 밀라 옐로우 12m 4y 원피스",
+    "sale_price": "할인율30%할인가39,200원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/827988654475126",
+    "affiliate_url": "https://naver.me/5nhGL3uI",
+    "image": "assets/products/827988654475126.jpg",
+    "published_at": "2026-07-21T12:04:07+00:00"
+  },
+  {
     "id": "827988654475128",
     "brand_name": "빌리 스토어",
     "title": "빌리 에스티 12m 4y 아이보리 원피스",
