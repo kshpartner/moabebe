@@ -1,5 +1,23 @@
 [
   {
+    "id": "939317180209984",
+    "brand_name": "데일리아기옷",
+    "title": "여아 돌잔치 촬영 하객룩 오닉스 원피스",
+    "sale_price": "37,400원",
+    "commission_text": "수수료 5%",
+    "category": "돌잔치용품",
+    "age_groups": [
+      "12~23개월",
+      "24개월 이상"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/939317180209984",
+    "affiliate_url": "https://naver.me/xLN2aZkf",
+    "image": "assets/products/939317180209984.jpg",
+    "published_at": "2026-07-21T12:03:11+00:00"
+  },
+  {
     "id": "877450578866569",
     "brand_name": "라비킷",
     "title": "아기 리버시블 냉감 쿨매트 침대 패드",
