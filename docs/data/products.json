@@ -1,5 +1,23 @@
 [
   {
+    "id": "899686651493888",
+    "brand_name": "데일리아기옷",
+    "title": "돌잔치 촬영 하객룩 오벨로 에이프런 원피스",
+    "sale_price": "39,600원",
+    "commission_text": "수수료 5%",
+    "category": "돌잔치용품",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/899686651493888",
+    "affiliate_url": "https://naver.me/5ECLkhFp",
+    "image": "assets/products/899686651493888.jpg",
+    "published_at": "2026-07-21T12:03:36+00:00"
+  },
+  {
     "id": "942476144405024",
     "brand_name": "데일리아기옷",
     "title": "플라워 패턴 여름 나시 원피스",
