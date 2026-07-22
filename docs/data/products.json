@@ -1,5 +1,22 @@
 [
   {
+    "id": "889495096094752",
+    "brand_name": "베이비앙",
+    "title": "베이비앙 무형광 여름용 신생아 배냇저고리",
+    "sale_price": "할인율20%할인가19,900원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/889495096094752",
+    "affiliate_url": "https://naver.me/GntMRqxg",
+    "image": "assets/products/889495096094752.jpg",
+    "published_at": "2026-07-22T03:09:53+00:00"
+  },
+  {
     "id": "939691166134240",
     "brand_name": "밤부베베",
     "title": "밤부베베 멜로우 빕 우주복 3~12개월",
