@@ -1,5 +1,23 @@
 [
   {
+    "id": "971603748091296",
+    "brand_name": "oDoDo",
+    "title": "모달 골지 바디슈트 상하세트 아기옷",
+    "sale_price": "20,800원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/971603748091296",
+    "affiliate_url": "https://naver.me/G4dP0TfO",
+    "image": "assets/products/971603748091296.jpg",
+    "published_at": "2026-07-22T03:07:37+00:00"
+  },
+  {
     "id": "827988654475126",
     "brand_name": "빌리 스토어",
     "title": "빌리 밀라 옐로우 12m 4y 원피스",
