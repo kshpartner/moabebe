@@ -1,5 +1,23 @@
 [
   {
+    "id": "939691166134241",
+    "brand_name": "밤부베베",
+    "title": "밤부 멜로우 바디수트 아기옷 3~12개월",
+    "sale_price": "할인율34%할인가17,000원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/939691166134241",
+    "affiliate_url": "https://naver.me/xIFWZ09L",
+    "image": "assets/products/939691166134241.jpg",
+    "published_at": "2026-07-22T03:08:01+00:00"
+  },
+  {
     "id": "949262474324545",
     "brand_name": "로라밤",
     "title": "쿨리온 반팔 바디수트 여름 아기 신생아 골지",
