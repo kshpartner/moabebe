@@ -1,5 +1,23 @@
 [
   {
+    "id": "939691166134240",
+    "brand_name": "밤부베베",
+    "title": "밤부베베 멜로우 빕 우주복 3~12개월",
+    "sale_price": "할인율36%할인가19,000원",
+    "commission_text": "수수료 5%",
+    "category": "의류",
+    "age_groups": [
+      "0~11개월",
+      "12~23개월"
+    ],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/939691166134240",
+    "affiliate_url": "https://naver.me/F7Fo5N9x",
+    "image": "assets/products/939691166134240.jpg",
+    "published_at": "2026-07-22T03:09:42+00:00"
+  },
+  {
     "id": "933347901582816",
     "brand_name": "이키",
     "title": "이키 오가닉 메쉬 신생아 배냇저고리",
