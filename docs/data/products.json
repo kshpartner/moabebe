@@ -159,8 +159,8 @@
     "age_groups": [
       "0~11개월"
     ],
-    "is_moabebe_pick": false,
-    "picked_at": "",
+    "is_moabebe_pick": true,
+    "picked_at": "2026-07-22T12:10:10+09:00",
     "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/949262474308161",
     "affiliate_url": "https://naver.me/xG0vK9r9",
     "image": "assets/products/949262474308161.jpg",
