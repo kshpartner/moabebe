@@ -1,5 +1,20 @@
 [
   {
+    "id": "810521304076933",
+    "brand_name": "배마마 PEI MAMA",
+    "title": "배마마 브로콜리 큐브 다진 야채 채소 토핑 재료 죽",
+    "sale_price": "할인율15%할인가2,200원",
+    "commission_text": "수수료 5%",
+    "category": "수유·이유식",
+    "age_groups": [],
+    "is_moabebe_pick": false,
+    "picked_at": "",
+    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/810521304076933",
+    "affiliate_url": "https://naver.me/GP2XJdqI",
+    "image": "assets/products/810521304076933.jpg",
+    "published_at": "2026-07-23T11:37:34+00:00"
+  },
+  {
     "id": "805482520302150",
     "brand_name": "베리네이처",
     "title": "베리네이처 유기농 단호박 45g 외 46종",
@@ -28,21 +43,6 @@
     "affiliate_url": "https://naver.me/F1aey8aW",
     "image": "assets/products/805482520302149.png",
     "published_at": "2026-07-23T11:37:10+00:00"
-  },
-  {
-    "id": "810521304076933",
-    "brand_name": "배마마 PEI MAMA",
-    "title": "배마마 브로콜리 큐브 다진 야채 채소 토핑 재료 죽",
-    "sale_price": "할인율15%할인가2,200원",
-    "commission_text": "수수료 5%",
-    "category": "수유·이유식",
-    "age_groups": [],
-    "is_moabebe_pick": false,
-    "picked_at": "",
-    "product_url": "https://brandconnect.naver.com/857572807539936/affiliate/products/810521304076933",
-    "affiliate_url": "https://naver.me/GP2XJdqI",
-    "image": "assets/products/810521304076933.jpg",
-    "published_at": "2026-07-23T11:36:58+00:00"
   },
   {
     "id": "944914877605920",
